@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:randomStudentOH.ViewModels"
+             x:Class="randomStudentOH.Views.MainPage"
+             Title="MainPage">
+    <ContentPage.BindingContext>
+        <viewModels:MainViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        
+    <VerticalStackLayout>
+        <Grid x:Name="MainGrid" ColumnDefinitions="1*,2*">
+            <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="{Binding DisplayLuckyNumber}" StyleClass="luckyNumber"/>
+                <Picker x:Name="ClassPicker" Title="klasa" ItemsSource="{Binding Classes}" ItemDisplayBinding="{Binding Symbol}" SelectedItem="{Binding SelectedClass}"/>
+                <Button Text="Dodaj klasę" Command="{Binding AddClassCommand}"  />
+                <Button Text="Usuń klasę" Command="{Binding RemoveClassCommand}"  />
+                <CollectionView x:Name="StudentsCollectionView" ItemsSource="{Binding DisplayStudents}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <HorizontalStackLayout>
+                                <CheckBox IsChecked="{Binding IsPresent}" />
+                                <Label Text="{Binding Name}" BackgroundColor="{Binding BackgroundColor}"/>
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button Text="Edytuj" Command="{Binding EditClassCommand}"  /> 
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                
+                    <Grid WidthRequest="567" HeightRequest="568" >
+                        <Image Source="tvimg.png" StyleClass="tvImage"/>
+                        <Grid  StyleClass="screenStyle" x:Name="ClockGrid" ColumnSpacing="5" RowSpacing="5"  ColumnDefinitions="1*,1*,1*,1*,1*,1*,1*" RowDefinitions="1*,1*,1*,1*,1*" RotationY="-30" TranslationX="-30" TranslationY="70" HeightRequest="260" WidthRequest="340">
+                        </Grid>
+                    </Grid>
+                <Label x:Name="RandomChoosedStudent" Text="{Binding DisplayNumber}" />
+                <Button Text="Losuj" Command="{Binding GetRandomNumberCommand}"  />
+            </VerticalStackLayout>
+        </Grid>
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

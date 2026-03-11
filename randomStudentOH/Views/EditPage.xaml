@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:randomStudentOH.ViewModels"
+    xmlns:models="clr-namespace:randomStudentOH.Models"
+    x:Class="randomStudentOH.Views.EditPage"
+    x:DataType="viewModels:EditViewModel">
+    <toolkit:Popup.BindingContext>
+        <viewModels:EditViewModel />
+    </toolkit:Popup.BindingContext>
+    <VerticalStackLayout
+        HeightRequest="1000"
+        WidthRequest="500"
+        VerticalOptions="Center"
+        HorizontalOptions="Center">
+        <Entry
+            Text="{Binding _selectedClass.Symbol}"
+            FontSize="24"
+            FontAttributes="Bold"
+            />
+        <CollectionView x:Name="StudentsCollectionView" ItemsSource="{Binding _selectedClass.Students}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Student">
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding Number}" StyleClass="indexNumber" />
+                        <Entry Text="{Binding Name}" />
+                        <Button Text="Usuń" Command="{Binding BindingContext.RemoveStudentCommand, Source={x:Reference Name=StudentsCollectionView}}" CommandParameter="{Binding .}" />
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button
+            Text="Dodaj ucznia"
+            Command="{Binding AddStudentCommand}" />
+        <Button
+            Text="Zapisz"
+            Command="{Binding SaveCommand}" />
+    </VerticalStackLayout>
+</toolkit:Popup>

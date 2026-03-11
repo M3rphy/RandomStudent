@@ -1,0 +1,62 @@
+.screenStyle {
+    background: black;
+}
+.tvImage {
+    -maui-aspect: aspectfill;
+    opacity: 1;
+}
+^ContentPage {
+    background: #2B303A;
+    color: #2B303A;
+    -maui-shell-background: #1C1E23;
+    -maui-shell-title: #92DCE5;
+}
+
+Label {
+    color: #EEE5E9;
+    font-size: 18;
+}
+VerticalStackLayout {
+    padding: 15;
+}
+CollectionView > HorizontalStackLayout > Label {
+    color: #EEE5E9;
+}
+Picker {
+    background-color: #EEE5E9;
+    color: #2B303A;
+    margin: 5;
+}
+Button {
+    background-color: #92DCE5;
+    border-radius: 10;
+    margin: 5;
+    padding: 10;
+}
+HorizontalStackLayout > Label {
+    color: #EEE5E9;
+}
+#RandomChoosedStudent {
+    font-size: 40;
+    color: #D64933;
+    font-weight: bold;
+    margin: 10;
+}
+Grid > Label {
+    color: #EEE5E9;
+}
+CheckBox {
+    color: #EEE5E9;
+}
+.luckyNumber {
+    color: #D64933;
+}
+.popupStyle > Label{
+    background-color: #D64933;
+}
+Entry {
+    background-color: #23B0C2;
+}
+.indexNumber {
+    color: #D64933;
+}
